@@ -53,47 +53,50 @@ RunSecondStage(100);
 }
 void nineright(){
     //9 Ball Right (Get the OG to work first)
-    PIDDataSet TestPara={1.1,0.03,0.31};
+   PIDDataSet TestPara={1.1,0.03,0.31};
 PIDDataSet AngPara={1.5,0.1,0.13};
-RunSecondStage(20);
+RunSecondStage(10);
 RunBottom(100);
-MoveEncoderPID(TestPara, 80,4.5, 0.4,0,false);
+MoveEncoderPID(TestPara, 100,4.5, 0.4,0,false);//go toward 3 balls
 wait(200,msec);
-MoveEncoderPID(TestPara, 70,10, 0.1,70,true);
-TurnMaxTimePID(AngPara, 30,0.5, true);
+MoveEncoderPID(TestPara, 80,55, 0.1,80,false);//curve towards long goal
 
-MoveEncoderPID(TestPara, 50,39, 0.1,30,true);
-
+MoveEncoderPID(TestPara, 24,20, 0.1,-5,true);//curve towards 2 balls
 wait(900,msec);
+
 //Addcodehere
 
 wait(200,msec);
-MoveEncoderPID(TestPara, -100,1.5, 0.1,45,false);
+TurnMaxTimePID(AngPara, 24,0.5, true);//turn to goal
+
+MoveEncoderPID(TestPara, -100,9.5, 0.1,70,false);//back up from center
 Scrapper.set(false);
-MoveEncoderPID(TestPara, -100,7.5, 0.1,0,false);
-MoveEncoderPID(TestPara, -100,35.5, 0.1,-80,false);
-TurnMaxTimePID(AngPara, 0,0.5, true);
+MoveEncoderPID(TestPara, -100,7.5, 0.1,0,false);//back up towards scoring area
+MoveEncoderPID(TestPara, -100,35.5, 0.1,-90,false);//curve around goal
+TurnMaxTimePID(AngPara, 0,0.7, true);//turn to goal
 Lift.set(true);
 wait(400,msec);
-MoveEncoderPID(TestPara, 100,14.5, 0.1,0,true);
+MoveEncoderPID(TestPara, 80,21.5, 0.1,0,true);//go toward goal for scoring
 RunSecondStage(100);
 
-wait(300,msec);
+wait(1300,msec);
 RunSecondStage(17);
 RunBottom(100);
-MoveEncoderPID(TestPara, -100,11, 0.1,0,true);
+wait(300,msec);
+MoveEncoderPID(TestPara, -100,11, 0.1,0,true);//back up from goal
 
 Scrapper.set(true);
-TurnMaxTimePID(AngPara, -160,0.5, true);
-MoveEncoderPID(TestPara, 60,20, 0.1,180,true);
+TurnMaxTimePID(AngPara, -160,0.5, true);//turn to match load
+MoveEncoderPID(TestPara, 60,20, 0.1,180,true);//match load
 wait(660,msec);
-MoveEncoderPID(TestPara, -70,19, 0.1,180,true);
+MoveEncoderPID(TestPara, -70,19, 0.1,180,true);//back up from match load
 Scrapper.set(false);
-TurnMaxTimePID(AngPara, 0,0.8, true);
-MoveEncoderPID(TestPara, 70,7, 0.1,0,true);
+TurnMaxTimePID(AngPara, 0,0.8, true);//turn toward long goal
+MoveEncoderPID(TestPara, 70,7, 0.1,0,true);//
 wait(100,msec);
 RunSecondStage(100);
 
+    
 }
 void AWP(){
     // declare initial conditions
@@ -145,6 +148,41 @@ void AWP(){
 }
 void testskills(){
     //Skills
+    PIDDataSet TestPara={1.1,0.03,0.31};
+    PIDDataSet AngPara={1.5,0.1,0.13};
+    Lift.set(true);
+    RunSecondStage(17);
+    RunBottom(100);
+    MoveEncoderPID(TestPara, 60,27, 0.4,26,true);
+    Scrapper.set(true);
+    wait(300,msec);
+    MoveEncoderPID(TestPara, 80,11, 0.1,26,true);
+    Scrapper.set(false);
+    TurnMaxTimePID(AngPara, 140,0.5, true);
+    MoveEncoderPID(TestPara, 60,50, 0.1,140,true);
+    TurnMaxTimePID(AngPara, 0,0.5, true);
+    MoveEncoderPID(TestPara, 60,15, 0.1,0,true);
+    RunSecondStage(100);
+    wait(1200,msec);
+    RunSecondStage(17);
+    MoveEncoderPID(TestPara, -60,12, 0.1,0,true);
+    RunBottom(-100);
+    Scrapper.set(true);
+    TurnMaxTimePID(AngPara, 180,0.5, true);
+    RunBottom(100);
+    MoveEncoderPID(TestPara, 60,28, 0.1,180,true);
+    wait(1200,msec);
+    MoveEncoderPID(TestPara, -100,12, 0.1,180,true);
+    Scrapper.set(false);
+    TurnMaxTimePID(AngPara, 0,0.5, true);
+    MoveEncoderPID(TestPara, 100,16, 0.1,0,true);
+    wait(100,msec);
+    RunSecondStage(100);
+    MoveEncoderPID(TestPara, -100,8, 0.1,0,true);
+    wait(1200,msec);
+    TurnMaxTimePID(AngPara, 0,0.5, true);
+    MoveEncoderPID(TestPara, 100,12, 0.1,0,true);
+
 }
 //Ignore all code after this point for now
 void test4(){
