@@ -148,41 +148,86 @@ void AWP(){
 }
 void testskills(){
     //Skills
-    PIDDataSet TestPara={1.1,0.03,0.31};
-    PIDDataSet AngPara={1.5,0.1,0.13};
+    PIDDataSet TestPara={1.1,0.02,0.31};
+    PIDDataSet AngPara={1.4,0.03,0.13};
     Lift.set(true);
-    RunSecondStage(17);
     RunBottom(100);
-    MoveEncoderPID(TestPara, 60,27, 0.4,26,true);
     Scrapper.set(true);
-    wait(300,msec);
-    MoveEncoderPID(TestPara, 80,11, 0.1,26,true);
-    Scrapper.set(false);
-    TurnMaxTimePID(AngPara, 140,0.5, true);
-    MoveEncoderPID(TestPara, 60,50, 0.1,140,true);
-    TurnMaxTimePID(AngPara, 0,0.5, true);
-    MoveEncoderPID(TestPara, 60,15, 0.1,0,true);
-    RunSecondStage(100);
-    wait(1200,msec);
-    RunSecondStage(17);
-    MoveEncoderPID(TestPara, -60,12, 0.1,0,true);
-    RunBottom(-100);
-    Scrapper.set(true);
-    TurnMaxTimePID(AngPara, 180,0.5, true);
-    RunBottom(100);
-    MoveEncoderPID(TestPara, 60,28, 0.1,180,true);
-    wait(1200,msec);
-    MoveEncoderPID(TestPara, -100,12, 0.1,180,true);
-    Scrapper.set(false);
-    TurnMaxTimePID(AngPara, 0,0.5, true);
-    MoveEncoderPID(TestPara, 100,16, 0.1,0,true);
+    MoveEncoderPID(TestPara, 70,38, 0.6,0,true);
     wait(100,msec);
+    TurnMaxTimePID(AngPara, 90,0.7, true);
+    wait(100,msec);
+    //Matchload
+    MoveEncoderPID(TestPara, 80,25, 0.3,87,false);
+    wait(200,msec);
+    RunSecondStage(17);
+    MoveEncoderPID(TestPara, 40,8, 0.2,87,false);
     RunSecondStage(100);
-    MoveEncoderPID(TestPara, -100,8, 0.1,0,true);
-    wait(1200,msec);
-    TurnMaxTimePID(AngPara, 0,0.5, true);
-    MoveEncoderPID(TestPara, 100,12, 0.1,0,true);
-
+    MoveEncoderPID(TestPara, 40,2.5, 0.2,87,false);
+    RunSecondStage(12);
+    MoveEncoderPID(TestPara, 40,6,0.4,87,false);
+    RunSecondStage(0);
+    MoveEncoderPID(TestPara, -80,12, 0.4,87,true);
+    RunBottom(0);
+    Scrapper.set(false);
+    TurnMaxTimePID(AngPara, -88,1, true);
+    MoveEncoderPID(TestPara, 70,14, 0.4,-88,true);
+    RunSecondStage(100);
+    RunBottom(100);
+    wait(1700,msec);
+    MoveEncoderPID(TestPara, -80,12, 0.4,-90,true);
+    TurnMaxTimePID(AngPara, -140,0.5, true);
+    RunSecondStage(17);
+    MoveEncoderPID(TestPara, 45,33, 0.4,-135,true);
+    wait(300,msec);
+    //Scrapper.set(true);
+    MoveEncoderPID(TestPara, 25,15, 0.1,-140,true);
+    wait(200,msec);
+    MoveEncoderPID(TestPara, -80,43, 0.4,-140,true);
+    wait(100,msec);
+    //Scrapper.set(false);
+    TurnMaxTimePID(AngPara, -89,0.7, true);
+    MoveEncoderPID(TestPara, 80,16, 0.1,-90,true);
+    RunSecondStage(100);
+    wait(700,msec);
+    //Next side 
+    RunSecondStage(-17);
+    MoveEncoderPID(TestPara, -80,12, 0.1,-90,true);
+    RunSecondStage(0);
+    TurnMaxTimePID(AngPara, -45,0.5, true);
+    MoveEncoderPID(TestPara, 80,18, 0.4,-45,true);
+    TurnMaxTimePID(AngPara, -90,0.7, true);
+    MoveEncoderPID(TestPara, 100,100, 0.1,-90,true);
+    Scrapper.set(true);
+    //Tuning
+    MoveEncoderPID(TestPara, 50,23, 0.1,-145,true);
+    TurnMaxTimePID(AngPara, -90,0.7, true);
+    MoveEncoderPID(TestPara, 70,20, 0.1,-90,true);
+    MoveEncoderPID(TestPara, 100,25, 0.3,-87,false);
+    wait(200,msec);
+    RunSecondStage(17);
+    MoveEncoderPID(TestPara, 40,8, 0.2,-87,false);
+    RunSecondStage(100);
+    MoveEncoderPID(TestPara, 40,2.5, 0.2,-87,false);
+    RunSecondStage(17);
+    MoveEncoderPID(TestPara, 40,6,0.7,-87,false);
+    RunSecondStage(0);
+    MoveEncoderPID(TestPara, -100,12, 0.4,-87,true);
+    RunBottom(0);
+    Scrapper.set(false);
+    TurnMaxTimePID(AngPara, 90,0.7, true);
+    MoveEncoderPID(TestPara, 70,14, 0.4,90,true);
+    RunSecondStage(100);
+    RunBottom(100);
+    wait(1700,msec);
+    MoveEncoderPID(TestPara, -100,42, 0.4,90,true);
+    TurnMaxTimePID(AngPara, 180,0.7, true);
+    MoveEncoderPID(TestPara, 100,36, 0.4,180,true);
+    MoveEncoderPID(TestPara, 40,24, 0.4,180,true);
+    MoveEncoderPID(TestPara, 40,12, 0.1,180,true);
+    TurnMaxTimePID(AngPara, 140,0.7, true);
+    MoveEncoderPID(TestPara, 40,24, 0.1,140,true);
+    
 }
 //Ignore all code after this point for now
 void test4(){
