@@ -148,32 +148,34 @@ void AWP(){
 }
 void testskills(){
     //Skills
-    PIDDataSet TestPara={1.1,0.02,0.31};
-    PIDDataSet AngPara={1.4,0.03,0.13};
+    PIDDataSet TestPara={2.4,0.02,0.31};
+    PIDDataSet AngPara={2.4,0.03,0.13};
+    PIDDataSet SpecialPara={2,0.01,0.27};
     //NOTE:time inbetween matchloaders (second and bottom stage) is determind by moves
     Lift.set(true);
-    RunBottom(100);
+    RunBottom(15);
     Scrapper.set(true);
     MoveEncoderPID(TestPara, 70,34, 0.6,0,true);
     wait(100,msec);
-    TurnMaxTimePID(AngPara, 90,0.7, true);
+    TurnMaxTimePID(AngPara, 90,1, true);
+    RunBottom(100);
     wait(100,msec);
     //Matchload
-    MoveEncoderPID(TestPara, 80,25, 0.3,87,false);
+    MoveEncoderPID(TestPara, 80,26, 0.3,87,true);
     wait(200,msec);
     RunSecondStage(17);
-    MoveEncoderPID(TestPara, 50,1.5, 0.3,87,false);
+    wait(400,msec);
     RunSecondStage(100);
-    MoveEncoderPID(TestPara, 50,1.5, 0.2,87,false);
+    wait(400,msec);
     RunSecondStage(12);
-    MoveEncoderPID(TestPara, 50,1,0.3,87,false);
+    wait(200,msec);
     RunSecondStage(0);
     MoveEncoderPID(TestPara, -80,12, 0.4,95,true);
     RunBottom(0);
     Scrapper.set(false);
-    TurnMaxTimePID(AngPara, -80,1.2, true);
+    TurnMaxTimePID(SpecialPara, -90,1.2, true);
     //Scoring
-    MoveEncoderPID(TestPara, 70,14, 0.4,-80,true);
+    MoveEncoderPID(TestPara, 70,14, 0.4,-90,true);
     RunSecondStage(100);
     RunBottom(100);
     wait(1700,msec);
@@ -182,58 +184,62 @@ void testskills(){
     MoveEncoderPID(TestPara, -80,12, 0.1,-90,true);
     RunSecondStage(0);
     TurnMaxTimePID(AngPara, -45,0.5, true);
-    MoveEncoderPID(TestPara, 80,18, 0.4,-45,true);
+    MoveEncoderPID(TestPara, 80,16, 0.4,-45,true);
     TurnMaxTimePID(AngPara, -90,0.7, true);
     MoveEncoderPID(TestPara, 100,100, 0.1,-90,true);
     Scrapper.set(true);
     //Tuning Next side movement to the MatchLoader
-    MoveEncoderPID(TestPara, 50,19, 0.2,-170,true);
+    TurnMaxTimePID(AngPara, -180,0.5, true);
+    MoveEncoderPID(TestPara, 50,13, 0.4,180,true);
     wait(100,msec);
-    TurnMaxTimePID(AngPara, -90,0.7, true);
+    TurnMaxTimePID(AngPara, -90,0.5, true);
     wait(100,msec);
-    MoveEncoderPID(TestPara, 70,23, 0.1,-90,true);
-    MoveEncoderPID(TestPara, 70,25, 0.3,-87,false);
+    MoveEncoderPID(TestPara, 70,37, 0.1,-90,true);
     wait(200,msec);
     //Second Matchload
     RunSecondStage(17);
-    MoveEncoderPID(TestPara, 50,1, 0.2,-87,false);
+    wait(200,msec);
     RunSecondStage(100);
-    MoveEncoderPID(TestPara, 50,1, 0.2,-87,false);
+    wait(500,msec);
     RunSecondStage(17);
-    MoveEncoderPID(TestPara, 50,1,0.3,-87,false);
+    wait(200,msec);
     RunSecondStage(0);
-    MoveEncoderPID(TestPara, -100,12, 0.4,-87,true);
+    MoveEncoderPID(TestPara, -100,11, 0.2,-86,true);
     RunBottom(0);
     Scrapper.set(false);
-    TurnMaxTimePID(AngPara, 90,0.7, true);
+    TurnMaxTimePID(SpecialPara, 96,1, true);
     //Scoring
-    MoveEncoderPID(TestPara, 70,14, 0.4,90,true);
+    MoveEncoderPID(SpecialPara, 70,10, 0.4,91,true);
     RunSecondStage(100);
     RunBottom(100);
     wait(1700,msec);
-    MoveEncoderPID(TestPara, -100,30, 0.4,90,true);
+    MoveEncoderPID(TestPara, -100,39, 0.4,70,true);
     wait(200,msec);
     RunSecondStage(12);
     //Clearing the blue goals
-    TurnMaxTimePID(AngPara, 180,0.7, true);
-    MoveEncoderPID(TestPara, 100,36, 0.4,190,true);
-    MoveEncoderPID(TestPara, 40,24, 0.4,180,true);
-    MoveEncoderPID(TestPara, 40,12, 0.1,180,true);
+    TurnMaxTimePID(AngPara, 185,0.7, true);
+    MoveEncoderPID(TestPara, 150,100, 0.05,187,true);
+    MoveEncoderPID(TestPara, -70,20, 0.3,180,true);
+    MoveEncoderPID(TestPara, 70,20, 0.3,180,true);
+    //MoveEncoderPID(TestPara, 100,25, 0.1,165,true);
+    //MoveEncoderPID(TestPara, 100,30, 0.1,180,true);
+    //MoveEncoderPID(TestPara, 40,12, 0.1,180,true);
     TurnMaxTimePID(AngPara, 140,0.7, true);
-    MoveEncoderPID(TestPara, 40,24, 0.1,140,true);
+    MoveEncoderPID(TestPara, 70,35, 0.1,140,true);
     TurnMaxTimePID(AngPara, 90,0.7, true);
+    MoveEncoderPID(TestPara, 50,15, 0.1,90,true);
     RunSecondStage(100);
     wait(1700,msec);
-    MoveEncoderPID(TestPara, 50,12, 0.1,90,true);
+    MoveEncoderPID(TestPara, -70,23, 0.1,90,true);
     TurnMaxTimePID(AngPara, -90,0.7, true);
     MoveEncoderPID(TestPara, 70,23, 0.1,-90,true);
     //Matchload once more 3rd corner
     RunSecondStage(17);
-    MoveEncoderPID(TestPara, 40,2, 0.2,-87,false);
+    wait(200,msec);
     RunSecondStage(100);
-    MoveEncoderPID(TestPara, 40,2.5, 0.2,-87,false);
+    wait(500,msec);
     RunSecondStage(17);
-    MoveEncoderPID(TestPara, 40,2,0.3,-87,false);
+    wait(200,msec);
     RunSecondStage(0);
     MoveEncoderPID(TestPara, -100,12, 0.4,-87,true);
     RunBottom(0);
